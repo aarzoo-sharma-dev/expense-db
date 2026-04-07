@@ -4,8 +4,12 @@ module.exports = (sequelize, DataTypes) => {
   const GroupMember = sequelize.define(
     "GroupMember",
     {
-      groupId: { type: DataTypes.TEXT, allowNull: false },
-      userId: { type: DataTypes.TEXT, allowNull: false },
+      id: {
+        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.UUIDV4,
+      },
+      groupId: { type: DataTypes.UUIDV4, allowNull: false },
+      userId: { type: DataTypes.UUIDV4, allowNull: false },
       role: { type: DataTypes.TEXT, allowNull: false },
       joinedAt: { type: DataTypes.DATE, allowNull: false },
     },

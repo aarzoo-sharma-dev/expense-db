@@ -1,24 +1,28 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const User = import("./User");
-  const Group = import("./Group");
+  const User = import("./User.js");
+  const Group = import("./Group.js");
   const Payment = sequelize.define(
     "Payment",
     {
+      id: {
+        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.UUIDV4,
+      },
       paidBy: {
-        type: DataTypes.TEXT,
+        type: DataTypes.UUIDV4,
         allowNull: false,
         references: { model: User, key: "id" },
       },
       paidTo: {
-        type: DataTypes.TEXT,
+        type: DataTypes.UUIDV4,
         allowNull: false,
         references: { model: User, key: "id" },
       },
       amount: { type: DataTypes.FLOAT, allowNull: false },
       groudId: {
-        type: DataTypes.TEXT,
+        type: DataTypes.UUIDV4,
         allowNull: true,
         references: { model: Group, key: "id" },
       }, // typo kept

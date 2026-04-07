@@ -6,15 +6,19 @@ module.exports = (sequelize, DataTypes) => {
   const Expense = sequelize.define(
     "Expense",
     {
+      id: {
+        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.UUIDV4,
+      },
       description: { type: DataTypes.TEXT, allowNull: false },
       amount: { type: DataTypes.FLOAT, allowNull: false },
       paidBy: {
-        type: DataTypes.TEXT,
+        type: DataTypes.UUIDV4,
         allowNull: false,
         references: { model: User, key: "id" },
       },
       groupId: {
-        type: DataTypes.TEXT,
+        type: DataTypes.UUIDV4,
         allowNull: true,
         references: { model: Group, key: "id" },
       },

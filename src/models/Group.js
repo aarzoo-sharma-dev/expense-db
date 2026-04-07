@@ -5,9 +5,13 @@ module.exports = (sequelize, DataTypes) => {
   const Group = sequelize.define(
     "Group",
     {
+      id: {
+        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.UUIDV4,
+      },
       groupName: { type: DataTypes.TEXT, allowNull: false },
       createdBy: {
-        type: DataTypes.TEXT,
+        type: DataTypes.UUIDV4,
         allowNull: false,
         references: { model: User, key: "id" },
       },

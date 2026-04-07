@@ -1,12 +1,16 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const User = import("./User");
+  const User = import("./User.js");
   const AuditLog = sequelize.define(
     "AuditLog",
     {
+      id: {
+        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.UUIDV4,
+      },
       userId: {
-        type: DataTypes.TEXT,
+        type: DataTypes.UUIDV4,
         allowNull: true,
         references: { model: User, key: "id" },
       },

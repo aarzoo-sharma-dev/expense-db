@@ -1,18 +1,22 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const User = import("./User");
-  const Expense = import("./Expense");
+  const User = import("./User.js");
+  const Expense = import("./Expense.js");
   const ExpenseSplit = sequelize.define(
     "ExpenseSplit",
     {
+      id: {
+        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.UUIDV4,
+      },
       expenseId: {
-        type: DataTypes.TEXT,
+        type: DataTypes.UUIDV4,
         allowNull: false,
         references: { model: Expense, key: "id" },
       },
       userId: {
-        type: DataTypes.TEXT,
+        type: DataTypes.UUIDV4,
         allowNull: false,
         references: { model: User, key: "id" },
       },
