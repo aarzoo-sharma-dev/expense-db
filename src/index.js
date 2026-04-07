@@ -35,7 +35,6 @@ let models = fs.readdirSync(modelsPath).reduce((models, file) => {
 
   if (file.indexOf(".") !== 0 && !isDir && file !== "index.js") {
     const model = require(filePath)(sequelize, Sequelize.DataTypes);
-    console.log(`✅ Model loaded: ${model.name}`);
     return { ...models, [model.name]: model };
   }
 
